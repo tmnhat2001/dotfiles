@@ -1,3 +1,21 @@
 [user]
-  name = James Tran
-  email = tmnhat2001@gmail.com
+	name = James Tran
+	email = tmnhat2001@gmail.com
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+
+[alias]
+	st = status -sb
+	pp = pull
+	ps = push
+	f = fetch
+	co = checkout
+	cb = checkout -b
+	r = rebase origin/master
+	ri = rebase -i origin/master
+	undo = reset HEAD~
+	redo = commit -c ORIG_HEAD
+	aa = add -A
+	c = commit -m

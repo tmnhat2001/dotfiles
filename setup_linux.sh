@@ -7,6 +7,7 @@ packages=(
   htop
   rbenv
   redis
+  xclip
   zsh
 )
 
@@ -16,6 +17,7 @@ do
 done
 
 # Install ruby-build
+
 mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
 
@@ -28,3 +30,5 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 ln -sf ~/dotfiles/bash/.bash_aliases ~/.bash_aliases
 ln -sf ~/dotfiles/git/.gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/git/.gitignore ~/.gitignore
+ln -sf ~/dotfiles/.pryrc ~/.pryrc
