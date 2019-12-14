@@ -16,10 +16,18 @@ do
   sudo apt install "${pkg}"
 done
 
+cd ~
+
 # Install ruby-build
 
 mkdir -p "$(rbenv root)"/plugins
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build
+
+# Install nvm
+
+curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh -o install_nvm.sh
+
+bash install_nvm.sh
 
 # Install Chrome
 
