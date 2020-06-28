@@ -7,8 +7,10 @@
 - link:
     ~/.bash_profile:
     ~/.bashrc:
-    ~/.shell:
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
     ~/.pryrc:
+    ~/.shell:
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
