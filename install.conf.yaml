@@ -8,6 +8,7 @@
     ~/.bash_profile:
     ~/.bashrc:
     ~/.shell:
+    ~/.pryrc:
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
