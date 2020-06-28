@@ -1,7 +1,10 @@
 {
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
-  "files.autoSave": "afterDelay",
   "editor.tabSize": 2,
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "workbench.colorTheme": "Monokai",
+  "editor.fontSize": 15,
+  "diffEditor.renderSideBySide": false,
+  "workbench.sideBar.location": "right"
 }
