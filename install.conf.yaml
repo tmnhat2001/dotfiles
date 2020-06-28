@@ -1,0 +1,13 @@
+- defaults:
+    link:
+        relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.bash_profile:
+    ~/.bashrc:
+    ~/.shell:
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
