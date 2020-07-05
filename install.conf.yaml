@@ -5,6 +5,7 @@
 - clean: ['~']
 
 - link:
+    ~/.bash:
     ~/.bash_profile:
     ~/.bashrc:
     ~/.config/Code/User/settings.json: vscode_settings.json
