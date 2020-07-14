@@ -9,6 +9,7 @@
     ~/.bash_profile:
     ~/.bashrc:
     ~/.config/Code/User/settings.json: vscode_settings.json
+    ~/.config/nvim/init.vim: init.vim
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
     ~/.pryrc:
