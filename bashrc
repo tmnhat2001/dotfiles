@@ -6,3 +6,6 @@ source ~/.bash/prompt.bash
 
 # Aliases
 source ~/.shell/aliases.sh
+
+# Local customizations
+source ~/.bash/local_customizations.bash

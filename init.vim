@@ -2,10 +2,12 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'morhetz/gruvbox'
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-obsession'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -20,10 +22,14 @@ syntax on
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
+nmap <Leader>q <esc>:qa<CR>
+
+
 set number
 set cursorline
 set splitright
 set splitbelow
+set noswapfile " disables .swap files being created
 
 "Toggle search highlighting
 nnoremap <silent> z/ :set hlsearch!<CR>
@@ -38,9 +44,12 @@ let g:go_highlight_fields = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 "fzf settings
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 let g:fzf_layout = { 'down': '~20%' }
 nnoremap <silent> <C-p> :Files<cr>
 noremap <silent> <Leader>f :Rg<CR>
+nnoremap <Leader>l :Rg \b<C-R><C-W>\b<CR>
