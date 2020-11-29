@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'morhetz/gruvbox'
 
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-obsession'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -24,8 +25,14 @@ imap <C-s> <esc>:w<CR>
 
 nmap <Leader>q <esc>:qa<CR>
 
+"split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 set number
+set relativenumber
 set cursorline
 set splitright
 set splitbelow
