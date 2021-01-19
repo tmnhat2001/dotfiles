@@ -63,6 +63,12 @@ set splitright
 set splitbelow
 set noswapfile " disables .swap files being created
 
+"tab settings
+set tabstop=2      " number of visual spaces per TAB
+set softtabstop=2  " number of space in tab when editing
+set shiftwidth=2   " number of spaces with reindent operations
+set expandtab
+
 "vim-rspec mappings
 let g:rspec_command = "!clear && bin/rspec {spec}"
 
@@ -72,6 +78,19 @@ map <Leader>l :call RunLastSpec()<CR>
 
 "Toggle search highlighting
 nnoremap <silent> z/ :set hlsearch!<CR>
+
+" ale settings
+let g:ale_linters = {
+\ 'ruby': ['rubocop', 'ruby'],
+\ 'javascript': ['eslint'],
+\ 'coffeescript': ['coffeelint']
+\}
+
+let g:ale_fixers = {
+\ 'ruby': ['rubocop'],
+\   'javascript': ['eslint'],
+\   'coffeescript': ['coffeelint'],
+\}
 
 "vim-go syntax highlighting
 let g:go_highlight_operators = 1
@@ -91,7 +110,60 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden -g '!.git/*'"
 let g:fzf_layout = { 'down': '~40%' }
 nnoremap <silent> <C-p> :Files<cr>
 noremap <silent> <Leader>f :Rg<CR>
-nnoremap <Leader>l :Rg \b<C-R><C-W>\b<CR>
+nnoremap <Leader>F :Rg \b<C-R><C-W>\b<CR>
 
-" set fillchars=vert:\│,fold:\-
-" hi VertSplit term=NONE cterm=NONE gui=NONE ctermfg=DarkGrey
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" coc.nvim setup (mostly copied from their README)
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+let g:coc_global_extensions=['coc-solargraph']
+
+" vim-repeat config
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
