@@ -13,6 +13,7 @@
 	f = fetch
 	co = checkout
 	cb = checkout -b
+  d = diff
 	r = rebase origin/master
 	ri = rebase -i origin/master
 	undo = reset HEAD~
