@@ -18,4 +18,5 @@
 	undo = reset HEAD~
 	redo = commit -c ORIG_HEAD
 	aa = add -A
-	c = commit -m
+  c = commit
+	cm = commit -m
