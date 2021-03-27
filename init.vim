@@ -25,6 +25,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'stsewd/fzf-checkout.vim'
 
 Plug 'preservim/nerdtree'
 
@@ -122,7 +123,9 @@ map <Leader>gt :GoTest<CR>
 
 "fzf settings
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden -g '!.git/*'"
-let g:fzf_layout = { 'down': '~40%' }
+let $FZF_DEFAULT_OPTS = "--reverse"
+let g:fzf_layout = { 'window': { 'height': 0.8, 'width': 0.8 } }
+
 nnoremap <silent> <C-p> :Files<cr>
 noremap <silent> <Leader>f :Rg<CR>
 nnoremap <Leader>F :Rg \b<C-R><C-W>\b<CR>
@@ -197,6 +200,9 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>l :TestLast<CR>
 
 " vim-fuigtive shortcuts for git
-nmap <Leader>gs :G<CR>
-nmap <Leader>gf :diffget //2<CR>
-nmap <Leader>gj :diffget //3<CR>
+nnoremap <Leader>gs :G<CR>
+nnoremap <Leader>gf :diffget //2<CR>
+nnoremap <Leader>gj :diffget //3<CR>
+
+" fzf-checkout settings
+nnoremap <Leader>gb :GBranches<CR>
