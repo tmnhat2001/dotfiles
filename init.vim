@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-unimpaired'
@@ -10,11 +10,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 Plug 'dense-analysis/ale'
 
 Plug 'pangloss/vim-javascript'
-
-Plug 'kchmck/vim-coffee-script'
 
 Plug 'mustache/vim-mustache-handlebars'
 
@@ -29,21 +28,26 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'preservim/nerdtree'
 
+Plug 'vim-test/vim-test'
+
 call plug#end()
+
+let g:python3_host_prog = "~/.pyenv/versions/nvim/bin/python" " Python 3 provider for Neovim
 
 let mapleader = ","
 
 "gruvbox colorscheme
 autocmd vimenter * colorscheme gruvbox
 set termguicolors
-let g:gruvbox_contrast_dark = 'soft'
 
 " disables autocomment on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 syntax on
 
-nnoremap <Leader>sc :vsp db/schema.rb<CR>
+" Open schema.rb in Rails projects
+" nnoremap <Leader>sc :vsp db/schema.rb<CR>
+
 nnoremap <silent> <Leader>f :Rg<CR>
 nnoremap <Leader>q :qa<CR>
 
@@ -60,25 +64,27 @@ nnoremap <C-H> <C-W><C-H>
 
 set number
 set relativenumber
+set nohlsearch
 set cursorline
 set splitright
 set splitbelow
 set noswapfile " disables .swap files being created
 set showmatch "show matching parenthesis/brace/bracket
 set autoread " Set to auto read when a file is changed from the outside
-
-"tab settings
 set tabstop=2      " number of visual spaces per TAB
 set softtabstop=2  " number of space in tab when editing
 set shiftwidth=2   " number of spaces with reindent operations
 set expandtab
+set smartindent
+set scrolloff=8 " keep 8 lines between the cursor and bottom/top of screen when scrolling
+set colorcolumn=120 " reminder for max number of characters per line
 
 "vim-rspec mappings
-let g:rspec_command = "!clear && bin/rspec {spec}"
+" let g:rspec_command = "!clear && bin/rspec {spec}"
 
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
 
 "Toggle search highlighting
 nnoremap <silent> z/ :set hlsearch!<CR>
@@ -87,13 +93,11 @@ nnoremap <silent> z/ :set hlsearch!<CR>
 let g:ale_linters = {
 \ 'ruby': ['rubocop', 'ruby'],
 \ 'javascript': ['eslint'],
-\ 'coffeescript': ['coffeelint']
 \}
 
 let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \   'javascript': ['eslint'],
-\   'coffeescript': ['coffeelint'],
 \   'python': ['flake8'],
 \}
 
@@ -171,7 +175,7 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-let g:coc_global_extensions=['coc-solargraph']
+" let g:coc_global_extensions=['coc-solargraph']
 
 " vim-repeat config
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
@@ -179,6 +183,12 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 " NERDTree settings
 let NERDTreeIgnore=['\.pyc$'] "ignore files in NERDTree
 
-" NERDTree mappings
 nnoremap <Leader>pt :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>pv :NERDTreeFind<CR>
+
+" vim-test mappings
+let test#python#runner = 'pytest'
+
+nmap <silent> <Leader>s :TestNearest<CR>
+nmap <silent> <Leader>t :TestFile<CR>
+nmap <silent> <Leader>l :TestLast<CR>
