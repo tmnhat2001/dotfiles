@@ -27,6 +27,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'preservim/nerdtree'
+
 call plug#end()
 
 let mapleader = ","
@@ -62,6 +64,8 @@ set cursorline
 set splitright
 set splitbelow
 set noswapfile " disables .swap files being created
+set showmatch "show matching parenthesis/brace/bracket
+set autoread " Set to auto read when a file is changed from the outside
 
 "tab settings
 set tabstop=2      " number of visual spaces per TAB
@@ -87,9 +91,10 @@ let g:ale_linters = {
 \}
 
 let g:ale_fixers = {
-\ 'ruby': ['rubocop'],
+\   'ruby': ['rubocop'],
 \   'javascript': ['eslint'],
 \   'coffeescript': ['coffeelint'],
+\   'python': ['flake8'],
 \}
 
 "vim-go syntax highlighting
@@ -104,6 +109,9 @@ let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+
+"vim-go tests
+map <Leader>gt :GoTest<CR>
 
 "fzf settings
 let $FZF_DEFAULT_COMMAND = "rg --files --hidden -g '!.git/*'"
@@ -167,3 +175,10 @@ let g:coc_global_extensions=['coc-solargraph']
 
 " vim-repeat config
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+" NERDTree settings
+let NERDTreeIgnore=['\.pyc$'] "ignore files in NERDTree
+
+" NERDTree mappings
+nnoremap <Leader>pt :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>pv :NERDTreeFind<CR>
