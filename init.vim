@@ -30,6 +30,9 @@ Plug 'preservim/nerdtree'
 
 Plug 'vim-test/vim-test'
 
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+
 call plug#end()
 
 let g:python3_host_prog = "~/.pyenv/versions/nvim/bin/python" " Python 3 provider for Neovim
@@ -192,3 +195,8 @@ let test#python#runner = 'pytest'
 nmap <silent> <Leader>s :TestNearest<CR>
 nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>l :TestLast<CR>
+
+" vim-fuigtive shortcuts for git
+nmap <Leader>gh :diffget //3<CR>
+nmap <Leader>gh :diffget //2<CR>
+nmap <Leader>gs :G<CR>
