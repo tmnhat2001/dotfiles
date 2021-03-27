@@ -197,6 +197,6 @@ nmap <silent> <Leader>t :TestFile<CR>
 nmap <silent> <Leader>l :TestLast<CR>
 
 " vim-fuigtive shortcuts for git
-nmap <Leader>gh :diffget //3<CR>
-nmap <Leader>gh :diffget //2<CR>
 nmap <Leader>gs :G<CR>
+nmap <Leader>gf :diffget //2<CR>
+nmap <Leader>gj :diffget //3<CR>
