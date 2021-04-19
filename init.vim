@@ -97,6 +97,7 @@ nnoremap <silent> z/ :set hlsearch!<CR>
 let g:ale_linters = {
 \ 'ruby': ['rubocop', 'ruby'],
 \ 'javascript': ['eslint'],
+\ 'python': ['flake8'],
 \}
 
 let g:ale_fixers = {
